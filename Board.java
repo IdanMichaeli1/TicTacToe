@@ -118,6 +118,19 @@ public class Board {
     }
 
     /**
+     * Checks if the Tic-Tac-Toe board is not full.
+     * @return true if at least one of the buttons is available and false otherwise.
+     */
+    public boolean isAvailable() {
+        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
+            if (buttons[i].getText().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * returns the winner as a String.
      * If the actual game is over (not in the minimax runs), declare the winner and
      * change the background
@@ -163,16 +176,5 @@ public class Board {
         return x.getText().equals(y.getText()) && x.getText().equals(z.getText()) && !x.getText().isEmpty();
     }
 
-    /**
-     * Checks if the Tic-Tac-Toe board is not full.
-     * @return true if at least one of the buttons is available and false otherwise.
-     */
-    private boolean isAvailable() {
-        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
-            if (buttons[i].getText().isEmpty()) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 }
