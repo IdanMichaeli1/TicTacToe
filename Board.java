@@ -1,3 +1,8 @@
+package TicTacToe;
+
+import java.awt.*;
+import javax.swing.*;
+
 
 /**
  * Board
@@ -14,6 +19,7 @@ public class Board {
     JLabel label = new JLabel();
     JButton[] buttons = new JButton[NUMBER_OF_BUTTONS];
     JButton resetButton = new JButton("New Game");
+    boolean isGame;     //true if this is the actual game and false if the game is played by the minimax algo.
 
     /**
      * Constructor of the board
@@ -50,7 +56,7 @@ public class Board {
             buttons[i].setBackground(Color.white);
             buttons[i].setFont(new Font("Ink Free", Font.BOLD,70));
             buttons[i].setFocusable(false);
-            buttons[i].addActionListener(this);
+            //buttons[i].addActionListener(this);
         }
 
         titlePanel.add(label);
@@ -71,7 +77,7 @@ public class Board {
         resetButtonPanel.setBounds(153, 200, 110, 40);
         resetButtonPanel.add(resetButton);
         resetButton.setFocusable(false);
-        resetButton.addActionListener(this);
+        //resetButton.addActionListener(this);
         layeredPane.add(resetButtonPanel, JLayeredPane.DRAG_LAYER);
     }
 
