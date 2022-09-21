@@ -1,7 +1,7 @@
 package TicTacToe;
 
 /**
- * player
+ * Player class represents a player in Tic-Tac-Toe game.
  */
 public class Player {
 
@@ -12,18 +12,15 @@ public class Player {
     public Player(String mark, boolean isHuman) {
         this.mark = mark;
         this.isHuman = isHuman;
-        if (mark == "X") {
+        if (mark.equals("X")) {
             this.oponnentMark = "O";
         }
         else {
-            oponnentMark = "X";
+            this.oponnentMark = "X";
         }
     }
 
-    public void makeTurn(Board board, String mark, int index, boolean isHuman) {
-        if (!isHuman) {
-            index = bestMoveIndex(board);
-        }
+    public void makeTurn(Board board, int index) {
         board.buttons[index].setText(mark);
     }
 
@@ -31,7 +28,7 @@ public class Player {
      * returns the best move index using the minimax method.
      * @return the best move index.
      */
-    private int bestMoveIndex(Board board) {
+    public int bestMoveIndex(Board board) {
         int bestMoveValue = Integer.MIN_VALUE;
         int bestMove = -1;
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {

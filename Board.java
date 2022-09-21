@@ -5,7 +5,7 @@ import javax.swing.*;
 
 
 /**
- * Board
+ * Board class represents a Tic-Tac-Toe board.
  */
 public class Board {
 
