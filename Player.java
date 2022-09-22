@@ -9,6 +9,11 @@ public class Player {
     String oponnentMark;
     boolean isHuman;
     
+    /**
+     * Constructor for the player class.
+     * @param mark the mark of the player ("X" or "O")
+     * @param isHuman is the player is human or AI player.
+     */
     public Player(String mark, boolean isHuman) {
         this.mark = mark;
         this.isHuman = isHuman;
@@ -21,16 +26,17 @@ public class Player {
     }
 
     /**
-     * draw the mark on the board in the requested spot.
+     * Draw the player's mark on the board in the requested spot.
      * @param board the Tic-Tac-Toe board.
      * @param index the index to put the mark in the array of buttons.
      */
     public void makeTurn(Board board, int index) {
         board.buttons[index].setText(mark);
+        board.label.setText(oponnentMark + " Turn");
     }
 
     /**
-     * returns the best move index using the minimax method.
+     * Returns the best move index using the minimax method.
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
@@ -51,8 +57,8 @@ public class Player {
     }
 
     /**
-     * minimax algorithm using alpha-beta pruning, A recursive function that considers all
-     * the possible ways the game can go and returns the value of the traversed path based on the evaluate function.
+     * Minimax algorithm using alpha-beta pruning, A recursive function that considers all
+     * the possible ways the game can go and returns the value of the traversed path based on the evaluate method.
      * @param isMax is the player is maximizing or minimizig.
      * @param depth the depth of the game. i.e the amount of plays that has been made.
      * @param alpha the maximizing player's best option.

@@ -22,7 +22,7 @@ public class Board {
     boolean isGame;     //true if this is the actual game and false if the game is played by the minimax algo.
 
     /**
-     * Constructor of the board
+     * Constructor of the Tic-Tac-Toe board.
      */
     public Board() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +56,6 @@ public class Board {
             buttons[i].setBackground(Color.white);
             buttons[i].setFont(new Font("Ink Free", Font.BOLD,70));
             buttons[i].setFocusable(false);
-            //buttons[i].addActionListener(this);
         }
 
         titlePanel.add(label);
@@ -77,7 +76,6 @@ public class Board {
         resetButtonPanel.setBounds(153, 200, 110, 40);
         resetButtonPanel.add(resetButton);
         resetButton.setFocusable(false);
-        //resetButton.addActionListener(this);
         layeredPane.add(resetButtonPanel, JLayeredPane.DRAG_LAYER);
     }
 
@@ -131,10 +129,9 @@ public class Board {
     }
 
     /**
-     * returns the winner as a String.
+     * Returns the winner as a String.
      * If the actual game is over (not in the minimax runs), declare the winner and
-     * change the background
-     * of the winning combination, also call to the newGame funcion.
+     * change the background of the winning combination.
      * @param x the index of the first button.
      * @param y the index of the second button.
      * @param z the index of the third button.
