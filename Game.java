@@ -12,11 +12,11 @@ class Game implements ActionListener{
     Board board = new Board();
     Player playerX = new Player("X", true);
     Player playerO = new Player("O", false);
+    Random random = new Random();
 
     public Game() {
         
         //choose randomly the player to play the first turn.
-        Random random = new Random();
         try {
             Thread.sleep(1200);
         } catch (InterruptedException e) {
@@ -25,10 +25,15 @@ class Game implements ActionListener{
         if (random.nextBoolean()) {
             playerTurn = true;
             board.label.setText("X Turn");
+            if (!playerX.isHuman) {
+                playerX.makeTurn(board, playerX.bestMoveIndex(board));
+            }
         }
         else {
             board.label.setText("O Turn");
-            playerO.makeTurn(board, playerO.bestMoveIndex(board));
+            if (!playerO.isHuman) {
+                playerO.makeTurn(board, playerO.bestMoveIndex(board));
+            }
         }
     }
 

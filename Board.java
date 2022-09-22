@@ -174,7 +174,5 @@ public class Board {
      */
     private boolean equal3(JButton x, JButton y, JButton z) {
         return x.getText().equals(y.getText()) && x.getText().equals(z.getText()) && !x.getText().isEmpty();
-    }
-
-    
+    }    
 }
