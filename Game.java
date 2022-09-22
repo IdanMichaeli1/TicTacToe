@@ -25,11 +25,7 @@ class Game implements ActionListener{
         board.resetButton.addActionListener(this);
 
         //Choose randomly the player to play the first turn.
-        try {
-            Thread.sleep(1200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep(1200);
         if (random.nextBoolean()) {
             playerXTurn = true;
             board.label.setText("X Turn");
@@ -86,6 +82,14 @@ class Game implements ActionListener{
         }
         else {
             playerXTurn = true;
+        }
+    }
+
+    private void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
