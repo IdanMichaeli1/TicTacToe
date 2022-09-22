@@ -20,6 +20,11 @@ public class Player {
         }
     }
 
+    /**
+     * draw the mark on the board in the requested spot.
+     * @param board the Tic-Tac-Toe board.
+     * @param index the index to put the mark in the array of buttons.
+     */
     public void makeTurn(Board board, int index) {
         board.buttons[index].setText(mark);
     }
@@ -104,8 +109,8 @@ public class Player {
 
     /**
      * evaluation of the board.
-     * @param board the gaming board.
-     * @return 10 if the winner is the field "mark" and -10 if the winner is the oponnentMark.
+     * @param board the Tic-Tac-Toe board.
+     * @return 10 if the winner is the field "mark" and -10 if the winner is the "oponnentMark" and 0 otherwise.
      */
     private int evaluate(Board board) {
         if (board.check().equals(mark)) {

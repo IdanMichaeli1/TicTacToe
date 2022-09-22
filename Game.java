@@ -8,11 +8,11 @@ import java.util.Random;
  */
 class Game implements ActionListener{
 
-    boolean playerTurn;     //true if it's the player's turn and false if it's the AI's turn.
     Board board = new Board();
     Player playerX = new Player("X", true);
     Player playerO = new Player("O", false);
     Random random = new Random();
+    boolean playerXTurn;     //true if it's playerX's turn and false if it's playerO's turn.
 
     public Game() {
         
@@ -23,7 +23,7 @@ class Game implements ActionListener{
             e.printStackTrace();
         }
         if (random.nextBoolean()) {
-            playerTurn = true;
+            playerXTurn = true;
             board.label.setText("X Turn");
             if (!playerX.isHuman) {
                 playerX.makeTurn(board, playerX.bestMoveIndex(board));
