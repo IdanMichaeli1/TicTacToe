@@ -56,7 +56,7 @@ public class Player {
      */
     private int minimax(Board board, boolean isMax, int depth, int alpha, int beta) {
         board.isGame = false;     //to distinguish from the actual game
-        int score = board.check();
+        int score = evaluate(board);
         if (score == 10) {
             return 10 - depth;
         }
@@ -100,5 +100,20 @@ public class Player {
             }
             return bestScore;
         }
+    }
+
+    /**
+     * evaluation of the board.
+     * @param board the gaming board.
+     * @return 10 if the winner is the field "mark" and -10 if the winner is the oponnentMark.
+     */
+    private int evaluate(Board board) {
+        if (board.check().equals(mark)) {
+            return 10;
+        }
+        if (board.check().equals(oponnentMark)) {
+            return -10;
+        }
+        return 0;
     }
 }

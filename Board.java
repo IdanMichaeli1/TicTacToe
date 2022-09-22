@@ -86,27 +86,27 @@ public class Board {
      * and return the value of the board based on the evaluate function.
      * @return the value of the board based on the evaluate function.
      */
-    public int check() {
+    public String check() {
         //check horizontally for a winning combination
         for (int i = 0; i <= 6; i += 3){
             if (equal3(buttons[i], buttons[i + 1], buttons[i + 2])) {
-                return evaluate(winner(i, i + 1, i + 2));
+                return winner(i, i + 1, i + 2);
             }
         }
 
         //check vertically for a winning combination
         for (int j = 0; j < 3; j++) {
             if (equal3(buttons[j], buttons[j + 3], buttons[j + 6])) {
-                return evaluate(winner(j, j + 3, j + 6));
+                return winner(j, j + 3, j + 6);
             }
         }
 
         //check diagonally for a winning combination
         if (equal3(buttons[0], buttons[4], buttons[8])) {
-            return evaluate(winner(0, 4, 8));
+            return winner(0, 4, 8);
         }
         else if (equal3(buttons[2], buttons[4], buttons[6])){
-            return evaluate(winner(2, 4, 6));
+            return winner(2, 4, 6);
         }
         
         //check if the game is a tie
@@ -114,7 +114,7 @@ public class Board {
             label.setText("It's a Tie");
             newGame();
         }
-        return 0;
+        return "";
     }
 
     /**
@@ -149,20 +149,6 @@ public class Board {
             newGame();
         }
         return buttons[x].getText();
-    }
-
-    /**
-     * evaluation of the winning board based on it's winner.
-     * @param winner the winner if there exist such one.
-     * @return 10 if "O" is the winner, -10 if "X" is the winner.
-     */
-    private int evaluate(String winner) {
-        if (winner == "O") {
-            return 10;
-        }
-        else {
-            return -10;
-        }
     }
 
     /**
