@@ -70,7 +70,7 @@ class Game implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Clicking on the "New Button" will close the current window and open a new one with a new game.
+        //Clicking on the "New Game" button will close the current window and open a new one with a new game.
         if (e.getSource() == board.resetButton) {
             board.frame.dispose();
             Game newGame = new Game();
@@ -157,6 +157,10 @@ class Game implements ActionListener{
         board.check();
     }
 
+    /**
+     * halt the program to a short period of time.
+     * @param millis the requested time to halt the programs in milliseconds.
+     */
     private void sleep(int millis) {
         try {
             Thread.sleep(millis);
