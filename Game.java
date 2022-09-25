@@ -96,19 +96,6 @@ class Game implements ActionListener{
     }
 
     /**
-     * Update the next player turn.
-     */
-    public void nextTurn() {
-        board.isGame = true;
-        if (playerXTurn) {
-            playerXTurn = false;
-        }
-        else {
-            playerXTurn = true;
-        }
-    }
-
-    /**
      * Puts a mark on the board based on the button that was clicked by either one of the two players.
      * @param board the Tic-Tac-Toe board.
      * @param index the index that was chosen to put the mark.
@@ -156,6 +143,19 @@ class Game implements ActionListener{
         player.makeTurn(board, player.bestMoveIndex(board));
         nextTurn();
         board.check();
+    }
+
+    /**
+     * Update the next player turn.
+     */
+    private void nextTurn() {
+        board.isGame = true;
+        if (playerXTurn) {
+            playerXTurn = false;
+        }
+        else {
+            playerXTurn = true;
+        }
     }
 
     /**
