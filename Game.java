@@ -2,6 +2,7 @@ package TicTacToe;
 
 import java.awt.event.*;
 import java.util.Random;
+import javax.swing.*;
 
 /**
  * Game class of Tic-Tac-Toe to run the game.
@@ -9,23 +10,47 @@ import java.util.Random;
 class Game implements ActionListener{
 
     Board board = new Board();
-    Player playerX = new Player("X", true);
-    Player playerO = new Player("O", false);
+    Player playerX;
+    Player playerO;
     Random random = new Random();
-    boolean playerXTurn;     //true if it's playerX's turn and false if it's playerO's turn.
+    boolean playerXTurn;    //true if it's playerX's turn and false if it's playerO's turn.
+    boolean isTwoPlayers;   //true if the game is player vs player and false if player vs computer 
 
     /**
      * Constructor for the Game class.
      */
     public Game() {
+
         //Add actionListner to the buttons
         for (int i = 0; i < board.NUMBER_OF_BUTTONS; i++) {
             board.buttons[i].addActionListener(this);
         }
         board.resetButton.addActionListener(this);
 
+        //Choose type of game to play (i.e 1 player or 2 players)
+        String[] options = { "1 Player", "2 Players" };
+        String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to paly", "Type of game", JOptionPane.PLAIN_MESSAGE, null, options, "1 Player");
+        if (answer == null) {
+            board.frame.dispose();
+            return;
+        }
+        else if (answer.equals(options[1])) {
+            isTwoPlayers = true;
+            this.playerX = new Player("X", true);
+            this.playerO = new Player("O", true);
+        }
+        //if the game is 1 player choose randomally if the human player is "X" or "O"
+        else if (random.nextBoolean()) {
+            this.playerX = new Player("X", true);
+            this.playerO = new Player("O", false);
+        }
+        else {
+            this.playerX = new Player("X", false);
+            this.playerO = new Player("O", true);
+        }
+
         //Choose randomly the player to play the first turn.
-        sleep(1200);
+        sleep(500);
         if (random.nextBoolean()) {
             playerXTurn = true;
             board.label.setText("X Turn");
@@ -51,25 +76,23 @@ class Game implements ActionListener{
             Game newGame = new Game();
             return;
         }
-        //Clicking on any of the NUMBER_OF_BUTTONS button from the Tic-Tac-Toe board sets it to X according to the player's turn.
+        //Clicking on any button from the Tic-Tac-Toe board sets it to "X" or "O" according to the type of game and the player's turn.
         for (int i = 0; i < board.NUMBER_OF_BUTTONS; i++) {
             if (e.getSource() == board.buttons[i]) {
-                if (playerXTurn) {
-                    //If the button that was clicked is empty and there is no winner yet play the player's turn.
-                    if (board.buttons[i].getText().isEmpty() && board.check().isEmpty()) {
-                        playerX.makeTurn(board, i);
-                        nextTurn();
-                        //If the board isn't full and there is no winner yet, play the AI's turn.
-                        if (board.check().isEmpty() && board.isAvailable()) {
-                            playerO.makeTurn(board, playerO.bestMoveIndex(board));
-                            nextTurn();
-                            board.check();
-                        }
-                    }
+                //if the two players are humans
+                if (isTwoPlayers) {
+                    twoPlayersGameplay(board, i);
+                }
+                //if playerX is human and playerO is ai
+                else if (playerXTurn && playerX.isHuman) {
+                    onePlayerGameplay(board, playerX, playerO, i);
+                }
+                //if playerO is human and playerX is ai
+                else if (!playerXTurn && playerO.isHuman) {
+                    onePlayerGameplay(board, playerO, playerX, i);
                 }
             }
         }
-        
     }
 
     /**
@@ -83,6 +106,55 @@ class Game implements ActionListener{
         else {
             playerXTurn = true;
         }
+    }
+
+    /**
+     * Two players gameplay, i.e the two players are humans.
+     * @param board the Tic-Tac-Toe board.
+     * @param index the index that was chosen to put the mark.
+     */
+    private void twoPlayersGameplay(Board board, int index) {
+        if (playerXTurn) {
+            //if the button that was clicked is empty
+            if (board.buttons[index].getText().isEmpty()) {
+                playerX.makeTurn(board, index);
+            }
+        }
+        else if (board.buttons[index].getText().isEmpty()) {
+            playerO.makeTurn(board, index);
+        }
+        nextTurn();
+        board.check();
+    }
+
+    /**
+     * One player gameplay, i.e the one player is human and the second is computer player (AI).
+     * @param board the Tic-Tac-Toe board.
+     * @param human the human player.
+     * @param ai the computer player.
+     * @param index the index that was chosen to put the mark for the human player.
+     */
+    private void onePlayerGameplay(Board board, Player human, Player ai, int index) {
+        //if the button that was clicked is empty and there is no winner yet play the human's turn
+        if (board.buttons[index].getText().isEmpty() && board.check().isEmpty()) {
+            human.makeTurn(board, index);
+            nextTurn();
+            //if the board isn't full and there is no winner yet, play the AI's turn
+            if (board.check().isEmpty() && board.isAvailable()) {
+                aiTurn(board, ai);
+            }
+        }
+    }
+
+    /**
+     * Makes the ai's turn and adjust the board accordingly.
+     * @param board the Tic-Tac-Toe board.
+     * @param player the ai player.
+     */
+    private void aiTurn(Board board, Player player) {
+        player.makeTurn(board, player.bestMoveIndex(board));
+        nextTurn();
+        board.check();
     }
 
     private void sleep(int millis) {
