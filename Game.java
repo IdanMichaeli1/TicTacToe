@@ -29,7 +29,7 @@ class Game implements ActionListener{
 
         //Choose type of game to play (i.e 1 player or 2 players)
         String[] options = { "1 Player", "2 Players" };
-        String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to paly", "Type of game", JOptionPane.PLAIN_MESSAGE, null, options, "1 Player");
+        String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to play", "Type of game", JOptionPane.PLAIN_MESSAGE, null, options, "1 Player");
         if (answer == null) {
             board.frame.dispose();
             return;
