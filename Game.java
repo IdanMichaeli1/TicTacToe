@@ -2,7 +2,7 @@ package TicTacToe;
 
 import java.awt.event.*;
 import java.util.Random;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  * Game class of Tic-Tac-Toe to run the game.
@@ -109,7 +109,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * Two players gameplay, i.e the two players are humans.
+     * Puts a mark on the board based on the button that was clicked by either one of the two players.
      * @param board the Tic-Tac-Toe board.
      * @param index the index that was chosen to put the mark.
      */
@@ -128,7 +128,8 @@ class Game implements ActionListener{
     }
 
     /**
-     * One player gameplay, i.e the one player is human and the second is computer player (AI).
+     * Puts the human player's mark on the board based on the button that was clicked and/or puts the opponent's mark
+     * based on the AI's algorithm.
      * @param board the Tic-Tac-Toe board.
      * @param human the human player.
      * @param ai the computer player.
@@ -147,7 +148,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * Makes the ai's turn and adjust the board accordingly.
+     * Makes the AI's turn.
      * @param board the Tic-Tac-Toe board.
      * @param player the ai player.
      */
@@ -158,7 +159,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * halt the program to a short period of time.
+     * halt the program to a requested period of time.
      * @param millis the requested time to halt the programs in milliseconds.
      */
     private void sleep(int millis) {
