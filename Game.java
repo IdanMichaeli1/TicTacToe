@@ -50,7 +50,7 @@ class Game implements ActionListener{
         }
 
         //Choose randomly the player to play the first turn.
-        sleep(500);
+        sleep(200);
         if (random.nextBoolean()) {
             playerXTurn = true;
             board.label.setText("X Turn");
