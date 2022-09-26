@@ -65,24 +65,9 @@ public class Board {
     }
 
     /**
-     * Setup of the "New Game" button.
-     */
-    public void newGame() {
-        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
-            buttons[i].setEnabled(false);
-        }
-        layeredPane.setLayout(null);
-        resetButtonPanel.setLayout(new BorderLayout());
-        resetButtonPanel.setBounds(153, 200, 110, 40);
-        resetButtonPanel.add(resetButton);
-        resetButton.setFocusable(false);
-        layeredPane.add(resetButtonPanel, JLayeredPane.DRAG_LAYER);
-    }
-
-    /**
      * Checks if the game is over, that means if one of the players won the game or if it's a tie or neither, 
-     * and return the value of the board based on the evaluate function.
-     * @return the value of the board based on the evaluate function.
+     * and return the winner if there is such one or empty String if there isn't.
+     * @return the winner as a string or empty string if there is no winner.
      */
     public String check() {
         //check horizontally for a winning combination
@@ -157,5 +142,20 @@ public class Board {
      */
     private boolean equal3(JButton x, JButton y, JButton z) {
         return x.getText().equals(y.getText()) && x.getText().equals(z.getText()) && !x.getText().isEmpty();
-    }    
+    }
+    
+    /**
+     * Setup of the "New Game" button.
+     */
+    private void newGame() {
+        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
+            buttons[i].setEnabled(false);
+        }
+        layeredPane.setLayout(null);
+        resetButtonPanel.setLayout(new BorderLayout());
+        resetButtonPanel.setBounds(153, 200, 110, 40);
+        resetButtonPanel.add(resetButton);
+        resetButton.setFocusable(false);
+        layeredPane.add(resetButtonPanel, JLayeredPane.DRAG_LAYER);
+    }
 }

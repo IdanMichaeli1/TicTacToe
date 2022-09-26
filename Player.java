@@ -26,9 +26,9 @@ public class Player {
     }
 
     /**
-     * Draw the player's mark on the board in the requested spot.
+     * Put this mark on the board in the requested spot.
      * @param board the Tic-Tac-Toe board.
-     * @param index the index to put the mark in the array of buttons.
+     * @param index the index to put the mark on the board.
      */
     public void makeTurn(Board board, int index) {
         board.buttons[index].setText(mark);
@@ -36,7 +36,7 @@ public class Player {
     }
 
     /**
-     * Returns the best move index using the minimax method.
+     * Returns the best move index for this mark using the minimax method.
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
@@ -59,10 +59,11 @@ public class Player {
     /**
      * Minimax algorithm using alpha-beta pruning, A recursive function that considers all
      * the possible ways the game can go and returns the value of the traversed path based on the evaluate method.
+     * @param board the Tic-Tac-Toe board.
      * @param isMax is the player is maximizing or minimizig.
-     * @param depth the depth of the game. i.e the amount of plays that has been made.
+     * @param depth the depth of the game. i.e the amount of plays that has been made in the game.
      * @param alpha the maximizing player's best option.
-     * @param beta the minimizing player'sbest option.
+     * @param beta the minimizing player's best option.
      * @return the value of the traversed path untill the last move.
      */
     private int minimax(Board board, boolean isMax, int depth, int alpha, int beta) {
@@ -116,7 +117,7 @@ public class Player {
     /**
      * evaluation of the board.
      * @param board the Tic-Tac-Toe board.
-     * @return 10 if the winner is the field "mark" and -10 if the winner is the "oponnentMark" and 0 otherwise.
+     * @return 10 if the winner is this mark and -10 if the winner is this oponnentMark and 0 otherwise.
      */
     private int evaluate(Board board) {
         if (board.check().equals(mark)) {

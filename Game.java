@@ -94,7 +94,8 @@ class Game implements ActionListener{
     }
 
     /**
-     * Puts a mark on the board based on the button that was clicked by either one of the two human players.
+     * Two human players gameplay.
+     * Puts a mark on the board based on the button that was clicked by either one of the two players.
      * @param board the Tic-Tac-Toe board.
      * @param index the index that was chosen to put the mark.
      */
@@ -113,8 +114,9 @@ class Game implements ActionListener{
     }
 
     /**
-     * Puts the human player's mark on the board based on the button that was clicked and/or puts the opponent's mark
-     * based on the AI's algorithm.
+     * One human players gameplay.
+     * Puts the human player's mark on the board based on the button that was clicked and/or
+     * puts the opponent's mark based on the AI's algorithm.
      * @param board the Tic-Tac-Toe board.
      * @param human the human player.
      * @param ai the computer player.
@@ -133,7 +135,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * Makes the AI's turn.
+     * Makes the AI's turn and adjust the game accordingly.
      * @param board the Tic-Tac-Toe board.
      * @param player the ai player.
      */
