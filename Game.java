@@ -55,15 +55,13 @@ class Game implements ActionListener{
             playerXTurn = true;
             board.label.setText("X Turn");
             if (!playerX.isHuman) {
-                playerX.makeTurn(board, playerX.bestMoveIndex(board));
-                nextTurn();
+                aiTurn(board, playerX);
             }
         }
         else {
             board.label.setText("O Turn");
             if (!playerO.isHuman) {
-                playerO.makeTurn(board, playerO.bestMoveIndex(board));
-                nextTurn();
+                aiTurn(board, playerO);
             }
         }
     }
@@ -83,11 +81,11 @@ class Game implements ActionListener{
                 if (isTwoPlayers) {
                     twoPlayersGameplay(board, i);
                 }
-                //if playerX is human and playerO is ai
+                //if playerX is human and playerO is AI
                 else if (playerXTurn && playerX.isHuman) {
                     onePlayerGameplay(board, playerX, playerO, i);
                 }
-                //if playerO is human and playerX is ai
+                //if playerO is human and playerX is AI
                 else if (!playerXTurn && playerO.isHuman) {
                     onePlayerGameplay(board, playerO, playerX, i);
                 }
@@ -96,7 +94,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * Puts a mark on the board based on the button that was clicked by either one of the two players.
+     * Puts a mark on the board based on the button that was clicked by either one of the two human players.
      * @param board the Tic-Tac-Toe board.
      * @param index the index that was chosen to put the mark.
      */
