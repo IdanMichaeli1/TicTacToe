@@ -22,7 +22,7 @@ class Game implements ActionListener{
     public Game() {
 
         //Add actionListner to the buttons
-        for (int i = 0; i < board.NUMBER_OF_BUTTONS; i++) {
+        for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
             board.buttons[i].addActionListener(this);
         }
         board.resetButton.addActionListener(this);
@@ -75,7 +75,7 @@ class Game implements ActionListener{
             return;
         }
         //Clicking on any button from the Tic-Tac-Toe board sets it to "X" or "O" according to the type of game and the player's turn.
-        for (int i = 0; i < board.NUMBER_OF_BUTTONS; i++) {
+        for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
             if (e.getSource() == board.buttons[i]) {
                 //if the two players are humans
                 if (isTwoPlayers) {
