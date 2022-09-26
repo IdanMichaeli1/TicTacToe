@@ -114,7 +114,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * One human players gameplay.
+     * One human player gameplay.
      * Puts the human player's mark on the board based on the button that was clicked and/or
      * puts the opponent's mark based on the AI's algorithm.
      * @param board the Tic-Tac-Toe board.
