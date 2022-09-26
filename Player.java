@@ -10,9 +10,9 @@ public class Player {
     boolean isHuman;
     
     /**
-     * Constructor for the player class.
+     * Constructor of the player class.
      * @param mark the mark of the player ("X" or "O")
-     * @param isHuman is the player is human or AI player.
+     * @param isHuman true if the player is human and false if the player is AI player.
      */
     public Player(String mark, boolean isHuman) {
         this.mark = mark;
@@ -37,6 +37,7 @@ public class Player {
 
     /**
      * Returns the best move index for this mark using the minimax method.
+     * @param board a Tic-Tac-Toe board.
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {

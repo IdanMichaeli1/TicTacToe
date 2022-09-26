@@ -17,7 +17,7 @@ class Game implements ActionListener{
     boolean isTwoPlayers;   //true if the game is player vs player and false if player vs computer 
 
     /**
-     * Constructor for the Game class.
+     * Constructor of the Game class.
      */
     public Game() {
 
