@@ -38,20 +38,21 @@ public class Player {
     }
 
     /**
-     * Returns the best move index for this mark using the minimax method.
+     * Returns the best move index for this mark using the minimax algorithm method.
      * @param board a Tic-Tac-Toe board.
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
-        //to make the first turn more interesting we randomlly choose one of the corners (otherwise the top left corner will be chosen evry game)
+        //if it's the first turn in the game, randomlly choose one of the corners to make it more interesting (otherwise the top left corner will be chosen evry game)
         if (board.isEmpty()) {
             Random random = new Random();
             int num = random.nextInt(4);
-            if (num == 0) return 0;
-            if (num == 1) return 2;
-            if (num == 2) return 6;
-            if (num == 3) return 8;
+            if (num == 0) return 0;     //top-left corner
+            if (num == 1) return 2;     //top-right corner
+            if (num == 2) return 6;     //bottom-left corner
+            if (num == 3) return 8;     //bottom-right corner
         }
+        //if this is not the first turn in the game
         int bestMoveValue = Integer.MIN_VALUE;
         int bestMove = -1;
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
