@@ -27,7 +27,7 @@ class Game implements ActionListener{
         }
         board.resetButton.addActionListener(this);
 
-        //choose type of game to play (i.e 1 player or 2 players)
+        //choose type of game to play (i.e single player or 2 players)
         String[] options = { "Single Player", "2 Players" };
         String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to play", "Tic-Tac-Toe", JOptionPane.PLAIN_MESSAGE, null, options, "Single Player");
         if (answer == null) {
@@ -39,7 +39,7 @@ class Game implements ActionListener{
             this.playerX = new Player("X", true);
             this.playerO = new Player("O", true);
         }
-        //if the game is 1 player choose randomally if the human player is "X" or "O"
+        //if the game is a single player player choose randomally if the human player is "X" or "O"
         else if (random.nextBoolean()) {
             this.playerX = new Player("X", true);
             this.playerO = new Player("O", false);
