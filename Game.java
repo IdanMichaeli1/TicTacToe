@@ -1,7 +1,7 @@
 package TicTacToe;
 
 import java.awt.event.*;
-import java.util.Random;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,7 +50,6 @@ class Game implements ActionListener{
         }
 
         //choose randomly the player to play the first turn.
-        sleep(200);
         if (random.nextBoolean()) {
             playerXTurn = true;
             board.label.setText("X Turn");
@@ -138,11 +137,21 @@ class Game implements ActionListener{
      * Makes the AI's turn and adjust the game accordingly.
      * @param board the Tic-Tac-Toe board.
      * @param player the AI player.
+     * @param toDelay true if we want the AI to play the turn in a slight delay and false otherwise.
      */
     private void aiTurn(Board board, Player player) {
-        player.makeTurn(board, player.bestMoveIndex(board));
-        nextTurn();
-        board.check();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+            player.makeTurn(board, player.bestMoveIndex(board));
+            nextTurn();
+            board.check();
+            timer.cancel();
+            }
+                    
+        }, 425);
     }
 
     /**
@@ -155,18 +164,6 @@ class Game implements ActionListener{
         }
         else {
             playerXTurn = true;
-        }
-    }
-
-    /**
-     * Halt the program to a requested period of time.
-     * @param millis the requested time to halt the programs in milliseconds.
-     */
-    private void sleep(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
