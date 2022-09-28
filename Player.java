@@ -43,7 +43,7 @@ public class Player {
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
-        //to make the first turn more interesting we randomlly choose one of the corners
+        //to make the first turn more interesting we randomlly choose one of the corners (otherwise the top left corner will be chosen evry game)
         if (board.isEmpty()) {
             Random random = new Random();
             int num = random.nextInt(4);
