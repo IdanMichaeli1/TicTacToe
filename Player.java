@@ -1,5 +1,7 @@
 package TicTacToe;
 
+import java.util.Random;
+
 /**
  * Player class represents a player in Tic-Tac-Toe game.
  */
@@ -41,6 +43,15 @@ public class Player {
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
+        //to make the first turn more interesting we randomlly choose one of the corners
+        if (board.isEmpty()) {
+            Random random = new Random();
+            int num = random.nextInt(4);
+            if (num == 0) return 0;
+            if (num == 1) return 2;
+            if (num == 2) return 6;
+            if (num == 3) return 8;
+        }
         int bestMoveValue = Integer.MIN_VALUE;
         int bestMove = -1;
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {

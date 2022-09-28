@@ -116,6 +116,19 @@ public class Board {
     }
 
     /**
+     * Checks if the board is empty or not.
+     * @return true if the board is empty and false otherwise.
+     */
+    public boolean isEmpty() {
+        for (int i = 0; i < NUMBER_OF_BUTTONS; i++) {
+            if (!buttons[i].getText().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Returns the winner as a String.
      * If the actual game is over (not in the minimax runs), declare the winner and
      * change the background of the winning combination.
