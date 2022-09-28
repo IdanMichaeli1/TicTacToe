@@ -21,13 +21,13 @@ class Game implements ActionListener{
      */
     public Game() {
 
-        //Add actionListner to the buttons
+        //add actionListner to the buttons
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
             board.buttons[i].addActionListener(this);
         }
         board.resetButton.addActionListener(this);
 
-        //Choose type of game to play (i.e 1 player or 2 players)
+        //choose type of game to play (i.e 1 player or 2 players)
         String[] options = { "Single Player", "2 Players" };
         String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to play", "Tic-Tac-Toe", JOptionPane.PLAIN_MESSAGE, null, options, "Single Player");
         if (answer == null) {
@@ -49,7 +49,7 @@ class Game implements ActionListener{
             this.playerO = new Player("O", true);
         }
 
-        //Choose randomly the player to play the first turn.
+        //choose randomly the player to play the first turn.
         sleep(200);
         if (random.nextBoolean()) {
             playerXTurn = true;
@@ -68,13 +68,13 @@ class Game implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Clicking on the "New Game" button will close the current window and open a new one with a new game.
+        //clicking on the "New Game" button will close the current window and open a new one with a new game.
         if (e.getSource() == board.resetButton) {
             board.frame.dispose();
             Game newGame = new Game();
             return;
         }
-        //Clicking on any button from the Tic-Tac-Toe board sets it to "X" or "O" according to the type of game and the player's turn.
+        //clicking on any button from the Tic-Tac-Toe board sets it to "X" or "O" according to the type of game and the player's turn.
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
             if (e.getSource() == board.buttons[i]) {
                 //if the two players are humans
@@ -120,7 +120,7 @@ class Game implements ActionListener{
      * @param board the Tic-Tac-Toe board.
      * @param human the human player.
      * @param ai the computer player.
-     * @param index the index that was chosen to put the mark for the human player.
+     * @param index the index that was chosen to put the mark by the human player.
      */
     private void onePlayerGameplay(Board board, Player human, Player ai, int index) {
         //if the button that was clicked is empty and there is no winner yet play the human's turn
@@ -137,7 +137,7 @@ class Game implements ActionListener{
     /**
      * Makes the AI's turn and adjust the game accordingly.
      * @param board the Tic-Tac-Toe board.
-     * @param player the ai player.
+     * @param player the AI player.
      */
     private void aiTurn(Board board, Player player) {
         player.makeTurn(board, player.bestMoveIndex(board));
@@ -159,7 +159,7 @@ class Game implements ActionListener{
     }
 
     /**
-     * halt the program to a requested period of time.
+     * Halt the program to a requested period of time.
      * @param millis the requested time to halt the programs in milliseconds.
      */
     private void sleep(int millis) {

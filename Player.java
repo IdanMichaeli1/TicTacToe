@@ -116,9 +116,9 @@ public class Player {
     }
 
     /**
-     * evaluation of the board.
+     * Evaluation of the board.
      * @param board the Tic-Tac-Toe board.
-     * @return 10 if the winner is this mark and -10 if the winner is this oponnentMark and 0 otherwise.
+     * @return 10 if the winner is this mark or -10 if the winner is this oponnentMark and 0 otherwise.
      */
     private int evaluate(Board board) {
         if (board.check().equals(mark)) {

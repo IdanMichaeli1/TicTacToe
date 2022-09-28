@@ -10,6 +10,8 @@ import javax.swing.*;
 public class Board {
 
     static final int NUMBER_OF_BUTTONS = 9;
+    static final int FRAME_WIDTH = 430;
+    static final int FRAME_HEIGHT = 550;
     
     JFrame frame = new JFrame();
     JLayeredPane layeredPane = new JLayeredPane();
@@ -19,14 +21,14 @@ public class Board {
     JLabel label = new JLabel();
     JButton[] buttons = new JButton[NUMBER_OF_BUTTONS];
     JButton resetButton = new JButton("New Game");
-    boolean isGame;     //true if this is the actual game and false if the game is played by the minimax algo.
+    boolean isGame;     //true if this is the actual game and false if the game is played by the minimax algorithm
 
     /**
      * Constructor of the Tic-Tac-Toe board.
      */
     public Board() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(430, 550);
+        frame.setSize(FRAME_WIDTH, 550);
         frame.setLayout(new BorderLayout());
         frame.setResizable(false);
         frame.setTitle("Tic-Tac-Toe");
@@ -36,7 +38,7 @@ public class Board {
         frame.setVisible(true);
 
         layeredPane.setLayout(new BorderLayout());
-        layeredPane.setBounds(0, 0, 430, 550);
+        layeredPane.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
         
         label.setBackground(Color.white);
         label.setForeground(Color.black);
@@ -46,7 +48,7 @@ public class Board {
         label.setOpaque(true);
         
         titlePanel.setLayout(new BorderLayout());
-        titlePanel.setBounds(0, 0, 430, 50);
+        titlePanel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT / 11);
 
         buttonPanel.setLayout(new GridLayout(3, 3, 10, 10));
         buttonPanel.setBackground(Color.black);
