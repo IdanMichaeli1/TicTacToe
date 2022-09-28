@@ -70,7 +70,7 @@ class Game implements ActionListener{
         //clicking on the "New Game" button will close the current window and open a new one with a new game.
         if (e.getSource() == board.resetButton) {
             board.frame.dispose();
-            Game newGame = new Game();
+            new Game();
             return;
         }
         //clicking on any button from the Tic-Tac-Toe board sets it to "X" or "O" according to the type of game and the player's turn.
@@ -167,6 +167,6 @@ class Game implements ActionListener{
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
+        new Game();
     }
 }
