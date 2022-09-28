@@ -137,7 +137,6 @@ class Game implements ActionListener{
      * Makes the AI's turn and adjust the game accordingly.
      * @param board the Tic-Tac-Toe board.
      * @param player the AI player.
-     * @param toDelay true if we want the AI to play the turn in a slight delay and false otherwise.
      */
     private void aiTurn(Board board, Player player) {
         Timer timer = new Timer();
