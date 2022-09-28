@@ -52,7 +52,7 @@ public class Player {
             if (num == 2) return 6;     //bottom-left corner
             if (num == 3) return 8;     //bottom-right corner
         }
-        //if this is not the first turn in the game
+        //if it's not the first turn in the game
         int bestMoveValue = Integer.MIN_VALUE;
         int bestMove = -1;
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
