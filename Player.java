@@ -28,8 +28,8 @@ public class Player {
     }
 
     /**
-     * Getter method for isHumen field.
-     * @return this isHumen. (true if the player is human and false if the player is AI).
+     * Getter method for isHuman field.
+     * @return this isHuman. (true if the player is human and false if the player is AI).
      */
     public boolean isHuman() {
         return this.isHuman;
