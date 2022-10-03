@@ -27,9 +27,9 @@ class Game implements ActionListener{
         }
         board.resetButton.addActionListener(this);
 
-        //choose type of game to play (i.e single player or 2 players)
+        //choose a type of game to play (i.e single player or 2 players)
         String[] options = { "Single Player", "2 Players" };
-        String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to play", "Tic-Tac-Toe", JOptionPane.PLAIN_MESSAGE, null, options, "Single Player");
+        String answer = (String) JOptionPane.showInputDialog(board.frame, "Choose a type of game to play:", "Tic-Tac-Toe", JOptionPane.PLAIN_MESSAGE, null, options, "Single Player");
         if (answer == null) {
             board.frame.dispose();
             return;

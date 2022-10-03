@@ -9,9 +9,9 @@ import javax.swing.*;
  */
 public class Board {
 
-    static final int NUMBER_OF_BUTTONS = 9;
-    static final int FRAME_WIDTH = 430;
-    static final int FRAME_HEIGHT = 550;
+    public static final int NUMBER_OF_BUTTONS = 9;
+    private static final int FRAME_WIDTH = 430;
+    private static final int FRAME_HEIGHT = 550;
     
     JFrame frame = new JFrame();
     JLayeredPane layeredPane = new JLayeredPane();
