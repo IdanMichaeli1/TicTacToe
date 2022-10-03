@@ -28,7 +28,7 @@ public class Board {
      */
     public Board() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(FRAME_WIDTH, FRAME_WIDTH);
+        frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         frame.setLayout(new BorderLayout());
         frame.setResizable(false);
         frame.setTitle("Tic-Tac-Toe");
