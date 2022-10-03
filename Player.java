@@ -8,7 +8,7 @@ import java.util.Random;
 public class Player {
 
     private String mark;
-    private String oponnentMark;
+    private String opponentMark;
     private boolean isHuman;
     
     /**
@@ -20,10 +20,10 @@ public class Player {
         this.mark = mark;
         this.isHuman = isHuman;
         if (mark.equals("X")) {
-            this.oponnentMark = "O";
+            this.opponentMark = "O";
         }
         else {
-            this.oponnentMark = "X";
+            this.opponentMark = "X";
         }
     }
 
@@ -42,7 +42,7 @@ public class Player {
      */
     public void makeTurn(Board board, int index) {
         board.buttons[index].setText(mark);
-        board.label.setText(oponnentMark + " Turn");
+        board.label.setText(opponentMark + " Turn");
     }
 
     /**
@@ -121,7 +121,7 @@ public class Player {
             int bestScore = Integer.MAX_VALUE;
             for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
                 if (board.buttons[i].getText().isEmpty()) {
-                    board.buttons[i].setText(oponnentMark);
+                    board.buttons[i].setText(opponentMark);
                     int minimaxScore = minimax(board, true, depth + 1, alpha, beta);
                     bestScore = Math.min(bestScore, minimaxScore);
                     board.buttons[i].setText("");
@@ -138,13 +138,13 @@ public class Player {
     /**
      * Evaluation of the board.
      * @param board the Tic-Tac-Toe board.
-     * @return 10 if the winner is this mark or -10 if the winner is this oponnentMark and 0 otherwise.
+     * @return 10 if the winner is this mark or -10 if the winner is this opponentMark and 0 otherwise.
      */
     private int evaluate(Board board) {
         if (board.check().equals(mark)) {
             return 10;
         }
-        if (board.check().equals(oponnentMark)) {
+        if (board.check().equals(opponentMark)) {
             return -10;
         }
         return 0;
