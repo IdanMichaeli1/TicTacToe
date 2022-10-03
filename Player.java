@@ -7,9 +7,9 @@ import java.util.Random;
  */
 public class Player {
 
-    String mark;
-    String oponnentMark;
-    boolean isHuman;
+    private String mark;
+    private String oponnentMark;
+    private boolean isHuman;
     
     /**
      * Constructor of the player class.
@@ -25,6 +25,14 @@ public class Player {
         else {
             this.oponnentMark = "X";
         }
+    }
+
+    /**
+     * Getter method for isHumen field.
+     * @return this isHumen. (true if the player is human and false if the player is AI).
+     */
+    public boolean isHuman() {
+        return this.isHuman;
     }
 
     /**

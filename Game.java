@@ -53,13 +53,13 @@ class Game implements ActionListener{
         if (random.nextBoolean()) {
             playerXTurn = true;
             board.label.setText("X Turn");
-            if (!playerX.isHuman) {
+            if (!playerX.isHuman()) {
                 aiTurn(board, playerX);
             }
         }
         else {
             board.label.setText("O Turn");
-            if (!playerO.isHuman) {
+            if (!playerO.isHuman()) {
                 aiTurn(board, playerO);
             }
         }
@@ -81,11 +81,11 @@ class Game implements ActionListener{
                     twoPlayersGameplay(board, i);
                 }
                 //if playerX is human and playerO is AI
-                else if (playerXTurn && playerX.isHuman) {
+                else if (playerXTurn && playerX.isHuman()) {
                     onePlayerGameplay(board, playerX, playerO, i);
                 }
                 //if playerO is human and playerX is AI
-                else if (!playerXTurn && playerO.isHuman) {
+                else if (!playerXTurn && playerO.isHuman()) {
                     onePlayerGameplay(board, playerO, playerX, i);
                 }
             }
