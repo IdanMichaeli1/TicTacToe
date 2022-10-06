@@ -39,7 +39,7 @@ class Game implements ActionListener{
             this.playerX = new Player("X", true);
             this.playerO = new Player("O", true);
         }
-        //if the game is a single player player choose randomally if the human player is "X" or "O"
+        //if the game is a single player choose randomally if the human player is "X" or "O"
         else if (random.nextBoolean()) {
             this.playerX = new Player("X", true);
             this.playerO = new Player("O", false);
