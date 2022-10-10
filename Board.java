@@ -21,7 +21,7 @@ public class Board {
     JLabel label = new JLabel();
     JButton[] buttons = new JButton[NUMBER_OF_BUTTONS];
     JButton resetButton = new JButton("New Game");
-    boolean isGame;     //true if this is the actual game and false if the game is played by the minimax algorithm
+    boolean isRealGame;     //true if this is the actual game and false if the game is played by the minimax algorithm
 
     /**
      * Constructor of the Tic-Tac-Toe board.
@@ -95,7 +95,7 @@ public class Board {
         }
         
         //check if the game is a tie
-        else if (!isAvailable() && isGame) {
+        else if (!isAvailable() && isRealGame) {
             label.setText("It's a Tie");
             newGame();
         }
@@ -138,7 +138,7 @@ public class Board {
      * @return the winner as a String.
      */
     private String winner(int x, int y, int z) {
-        if (isGame) {
+        if (isRealGame) {
             label.setText(buttons[x].getText() + " Wins!");
             buttons[x].setBackground(Color.green);
             buttons[y].setBackground(Color.green);

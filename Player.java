@@ -88,7 +88,7 @@ public class Player {
      * @return the value of the traversed path untill the last move.
      */
     private int minimax(Board board, boolean isMax, int depth, int alpha, int beta) {
-        board.isGame = false;     //to distinguish from the actual game
+        board.isRealGame = false;     //to distinguish from the actual game
         int score = evaluate(board);
         if (score == 10) {
             return 10 - depth;

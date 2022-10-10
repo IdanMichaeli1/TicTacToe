@@ -157,7 +157,7 @@ class Game implements ActionListener{
      * Update the next player turn.
      */
     private void nextTurn() {
-        board.isGame = true;
+        board.isRealGame = true;
         if (playerXTurn) {
             playerXTurn = false;
         }
