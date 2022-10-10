@@ -99,16 +99,21 @@ class Game implements ActionListener{
      * @param index the index that was chosen to put the mark.
      */
     private void twoPlayersGameplay(Board board, int index) {
-        //if it's playerX's turn and the button that was clicked is empty
-        if (playerXTurn && board.buttons[index].getText().isEmpty()) {
-            playerX.makeTurn(board, index);
+        //if it's playerX's turn
+        if (playerXTurn) {
+            //if the button that was clicked is empty
+            if (board.buttons[index].getText().isEmpty()) {
+                playerX.makeTurn(board, index);
+                nextTurn();
+                board.check();
+            }
         }
         //if it's playerO's turn and the button that was clicked is empty
         else if (board.buttons[index].getText().isEmpty()) {
             playerO.makeTurn(board, index);
+            nextTurn();
+            board.check();
         }
-        nextTurn();
-        board.check();
     }
 
     /**
