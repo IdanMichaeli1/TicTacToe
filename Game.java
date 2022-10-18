@@ -49,20 +49,8 @@ class Game implements ActionListener{
             this.playerO = new Player("O", true);
         }
 
-        //choose randomly the player to play the first turn.
-        if (random.nextBoolean()) {
-            playerXTurn = true;
-            board.label.setText("X Turn");
-            if (!playerX.isHuman()) {
-                aiTurn(board, playerX);
-            }
-        }
-        else {
-            board.label.setText("O Turn");
-            if (!playerO.isHuman()) {
-                aiTurn(board, playerO);
-            }
-        }
+        //fisrt turn adjustment to the game
+        firstTurn();
     }
 
     @Override
@@ -167,6 +155,26 @@ class Game implements ActionListener{
         }
         else {
             playerXTurn = true;
+        }
+    }
+
+    /**
+     * Chooses randomly the player to play the first turn,
+     * if the player is AI player, also makes it's turn.
+     */
+    private void firstTurn() {
+        if (random.nextBoolean()) {
+            playerXTurn = true;
+            board.label.setText("X Turn");
+            if (!playerX.isHuman()) {
+                aiTurn(board, playerX);
+            }
+        }
+        else {
+            board.label.setText("O Turn");
+            if (!playerO.isHuman()) {
+                aiTurn(board, playerO);
+            }
         }
     }
 
