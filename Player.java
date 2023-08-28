@@ -11,26 +11,29 @@ public class Player {
     private String opponentMark;
     private boolean isHuman;
     private Random random = new Random();
-    
+
     /**
      * Constructor of the player class.
-     * @param mark the mark of the player ("X" or "O")
-     * @param isHuman true if the player is human and false if the player is AI player.
+     * 
+     * @param mark    the mark of the player ("X" or "O")
+     * @param isHuman true if the player is human and false if the player is AI
+     *                player.
      */
     public Player(String mark, boolean isHuman) {
         this.mark = mark;
         this.isHuman = isHuman;
         if (mark.equals("X")) {
             this.opponentMark = "O";
-        }
-        else {
+        } else {
             this.opponentMark = "X";
         }
     }
 
     /**
      * Getter method for isHuman field.
-     * @return this isHuman. (true if the player is human and false if the player is AI).
+     * 
+     * @return this isHuman. (true if the player is human and false if the player is
+     *         AI).
      */
     public boolean isHuman() {
         return this.isHuman;
@@ -38,6 +41,7 @@ public class Player {
 
     /**
      * Put this mark on the board in the requested spot.
+     * 
      * @param board the Tic-Tac-Toe board.
      * @param index the index to put the mark on the board.
      */
@@ -48,16 +52,17 @@ public class Player {
 
     /**
      * Returns the best move index for this mark using the minimax algorithm method.
+     * 
      * @param board a Tic-Tac-Toe board.
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
-        //if it's not the first turn in the game
+        // if it's not the first turn in the game
         int bestMoveValue = Integer.MIN_VALUE;
         int bestMove = -1;
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
             if (board.buttons[i].getText().isEmpty()) {
-                board.buttons[i].setText(mark);   
+                board.buttons[i].setText(mark);
                 int moveValue = minimax(board, false, 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
                 board.buttons[i].setText("");
                 if (moveValue > bestMoveValue) {
@@ -77,17 +82,21 @@ public class Player {
     }
 
     /**
-     * Minimax algorithm using alpha-beta pruning, A recursive function that considers all
-     * the possible ways the game can go and returns the value of the traversed path based on the evaluate method.
+     * Minimax algorithm using alpha-beta pruning, A recursive function that
+     * considers all
+     * the possible ways the game can go and returns the value of the traversed path
+     * based on the evaluate method.
+     * 
      * @param board the Tic-Tac-Toe board.
      * @param isMax is the player is maximizing or minimizig.
-     * @param depth the depth of the game. i.e the amount of plays that has been made in the game.
+     * @param depth the depth of the game. i.e the amount of plays that has been
+     *              made in the game.
      * @param alpha the maximizing player's best option.
-     * @param beta the minimizing player's best option.
+     * @param beta  the minimizing player's best option.
      * @return the value of the traversed path untill the last move.
      */
     private int minimax(Board board, boolean isMax, int depth, int alpha, int beta) {
-        board.isRealGame = false;     //to distinguish from the actual game
+        board.isRealGame = false; // to distinguish from the actual game
         int score = evaluate(board);
         if (score == 10) {
             return 10 - depth;
@@ -98,7 +107,7 @@ public class Player {
         if (!board.isAvailable()) {
             return 0;
         }
-        //if it's the maximaizing player's turn
+        // if it's the maximaizing player's turn
         if (isMax) {
             int bestScore = Integer.MIN_VALUE;
             for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
@@ -115,7 +124,7 @@ public class Player {
             }
             return bestScore;
         }
-        //if it's the minimizing player's turn
+        // if it's the minimizing player's turn
         else {
             int bestScore = Integer.MAX_VALUE;
             for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
@@ -136,8 +145,10 @@ public class Player {
 
     /**
      * Evaluation of the board.
+     * 
      * @param board the Tic-Tac-Toe board.
-     * @return 10 if the winner is this mark or -10 if the winner is this opponentMark and 0 otherwise.
+     * @return 10 if the winner is this mark or -10 if the winner is this
+     *         opponentMark and 0 otherwise.
      */
     private int evaluate(Board board) {
         if (board.check().equals(mark)) {
