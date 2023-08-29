@@ -28,8 +28,8 @@ public class Board {
     JLabel label = new JLabel();
     JButton[] buttons = new JButton[NUMBER_OF_BUTTONS];
     JButton resetButton = new JButton("New Game");
-    boolean isRealGame; // true if this is the actual game and false if the game is played by the
-                        // minimax algorithm
+    private boolean isRealGame; // true if this is the actual game and false if the game is played by the
+    // minimax algorithm
 
     /**
      * Constructor of the Tic-Tac-Toe board.
@@ -72,6 +72,27 @@ public class Board {
         layeredPane.add(titlePanel, BorderLayout.NORTH);
         layeredPane.add(buttonPanel);
         frame.add(layeredPane);
+    }
+
+    /**
+     * Gets the isRealGame field.
+     * 
+     * @return true if this is the actual game and false if the game is played by
+     *         the minimax algorithm.
+     */
+    public boolean getIsRealGame() {
+        return this.isRealGame;
+    }
+
+    /**
+     * Sets the isRealGame field to true if this is the actual game and false if the
+     * game is played by the minimax algorithm.
+     * 
+     * @param isRealGame true if this is the actual game and false if the game is
+     *                   played by the minimax algorithm.
+     */
+    public void setIsRealGame(boolean isRealGame) {
+        this.isRealGame = isRealGame;
     }
 
     /**
