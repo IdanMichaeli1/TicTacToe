@@ -82,21 +82,21 @@ public class Board {
      * @return the winner as a string or empty string if there is no winner.
      */
     public String check() {
-        // check horizontally for a winning combination
+        // check horizontally
         for (int i = 0; i <= 6; i += 3) {
             if (equal3(buttons[i], buttons[i + 1], buttons[i + 2])) {
                 return winner(i, i + 1, i + 2);
             }
         }
 
-        // check vertically for a winning combination
+        // check vertically
         for (int j = 0; j < 3; j++) {
             if (equal3(buttons[j], buttons[j + 3], buttons[j + 6])) {
                 return winner(j, j + 3, j + 6);
             }
         }
 
-        // check diagonally for a winning combination
+        // check diagonally
         if (equal3(buttons[0], buttons[4], buttons[8])) {
             return winner(0, 4, 8);
         } else if (equal3(buttons[2], buttons[4], buttons[6])) {

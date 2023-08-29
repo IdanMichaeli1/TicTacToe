@@ -57,7 +57,6 @@ public class Player {
      * @return the best move index.
      */
     public int bestMoveIndex(Board board) {
-        // if it's not the first turn in the game
         int bestMoveValue = Integer.MIN_VALUE;
         int bestMove = -1;
         for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
@@ -65,16 +64,11 @@ public class Player {
                 board.buttons[i].setText(mark);
                 int moveValue = minimax(board, false, 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
                 board.buttons[i].setText("");
-                if (moveValue > bestMoveValue) {
+                // update the best move if a better move found or make a choice between two
+                // equal moves using some threshold
+                if ((moveValue > bestMoveValue) || (moveValue == bestMoveValue && random.nextFloat() > 0.7)) {
                     bestMoveValue = moveValue;
                     bestMove = i;
-                }
-                // make a choice between two equal moves using some threshold
-                else if (moveValue == bestMoveValue) {
-                    if (random.nextFloat() > 0.7) {
-                        bestMoveValue = moveValue;
-                        bestMove = i;
-                    }
                 }
             }
         }
@@ -82,10 +76,9 @@ public class Player {
     }
 
     /**
-     * Minimax algorithm using alpha-beta pruning, A recursive function that
-     * considers all
-     * the possible ways the game can go and returns the value of the traversed path
-     * based on the evaluate method.
+     * Minimax algorithm using alpha-beta pruning, A recursive method that
+     * considers all the possible ways the game can go and returns the value of the
+     * traversed path based on the evaluate method.
      * 
      * @param board the Tic-Tac-Toe board.
      * @param isMax is the player is maximizing or minimizig.
@@ -107,7 +100,7 @@ public class Player {
         if (!board.isAvailable()) {
             return 0;
         }
-        // if it's the maximaizing player's turn
+        // maximaizing player's turn
         if (isMax) {
             int bestScore = Integer.MIN_VALUE;
             for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
@@ -124,7 +117,7 @@ public class Player {
             }
             return bestScore;
         }
-        // if it's the minimizing player's turn
+        // minimizing player's turn
         else {
             int bestScore = Integer.MAX_VALUE;
             for (int i = 0; i < Board.NUMBER_OF_BUTTONS; i++) {
