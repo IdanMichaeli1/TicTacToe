@@ -182,7 +182,7 @@ public class Board {
     }
 
     /**
-     * Checks if 3 buttons from the Tic-Tac-Toe board are the same and not empty.
+     * Checks if 3 buttons from the Tic-Tac-Toe board has the same mark, 'X' or 'O'.
      * 
      * @param x first button.
      * @param y second button.
