@@ -50,7 +50,3 @@ The project consists of the following Java files:
 3. The game will announce the winner when a player wins or declare a tie when no more moves are available.
 4. Click the "New Game" button to start a new game.
 
-## Acknowledgments
-
-- The project was inspired by the classic Tic-Tac-Toe game.
-- The minimax algorithm implementation for the AI opponent was based on common AI principles.
