@@ -47,7 +47,9 @@ public class Player {
      */
     public void makeTurn(Board board, int index) {
         board.buttons[index].setText(mark);
-        board.label.setText(opponentMark + " Turn");
+        if (board.getIsRealGame()) {
+            board.label.setText(opponentMark + " Turn");
+        }
     }
 
     /**
@@ -92,12 +94,15 @@ public class Player {
         board.setIsRealGame(false); // to distinguish from the actual game
         int score = evaluate(board);
         if (score == 10) {
+            board.setIsRealGame(true);
             return 10 - depth;
         }
         if (score == -10) {
+            board.setIsRealGame(true);
             return -10 + depth;
         }
         if (!board.isAvailable()) {
+            board.setIsRealGame(true);
             return 0;
         }
         // maximaizing player's turn
