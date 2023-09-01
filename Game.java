@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  */
 class Game implements ActionListener {
 
-    Board board = new Board();
-    Player playerX;
-    Player playerO;
-    Random random = new Random();
-    boolean playerXTurn; // true if it's playerX's turn and false if it's playerO's turn.
-    boolean isTwoPlayers; // true if the game is 2 players and false if it's single player.
+    private Board board = new Board();
+    private Player playerX;
+    private Player playerO;
+    private Random random = new Random();
+    private boolean playerXTurn; // true if it's playerX's turn and false if it's playerO's turn.
+    private boolean isTwoPlayers; // true if the game is 2 players and false if it's single player.
 
     /**
      * Constructor of the Game class.
